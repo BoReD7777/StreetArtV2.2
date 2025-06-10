@@ -1,5 +1,6 @@
 package com.example.streetartv2
 
+import Artwork
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
@@ -243,12 +244,12 @@ class CameraActivity : AppCompatActivity() {
                 }
 
                 // 6. Tworzymy obiekt Artwork z WSZYSTKIMI danymi
+
                 val artwork = Artwork(
                     imageUrl = publicUrl,
                     latitude = location?.latitude,
                     longitude = location?.longitude,
-                    address = addressText,
-                    authorUsername = authorName // <-- DOŁĄCZAMY NICK
+                    address = addressText
                 )
 
                 // 7. Wstawiamy obiekt do bazy danych

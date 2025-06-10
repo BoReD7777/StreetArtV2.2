@@ -1,5 +1,6 @@
 package com.example.streetartv2
 
+import Artwork
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -107,9 +108,26 @@ class ArtworkDetailActivity : AppCompatActivity() {
 
                 // Krok 2: Usuń plik z Supabase Storage
                 // Wyciągamy nazwę pliku z jego pełnego URL
-                val fileName = artwork.imageUrl.substring(artwork.imageUrl.lastIndexOf('/') + 1)
-                StreetArtApplication.supabase.storage.from("artworks").delete(fileName)
+                val fileName: String? = artwork.imageUrl?.let { url ->
+                    // Ten kod w środku wykona się tylko, gdy imageUrl istnieje.
+                    // Używamy tutaj bezpiecznej zmiennej 'url' zamiast 'artwork.imageUrl'.
+                    url.substring(url.lastIndexOf('/') + 1)
+                }
+                fileName?.takeIf { it.isNotBlank() }?.let { nameToDelete ->
+                    // Ten kod wykona się tylko jeśli 'fileName' ma jakąś sensowną wartość.
+                    // 'nameToDelete' to bezpieczny String, którego wymaga funkcja delete().
 
+                    // Pamiętaj, że operacje sieciowe jak delete powinny być w korutynie.
+                    lifecycleScope.launch {
+                        try {
+                            StreetArtApplication.supabase.storage.from("artworks").delete(nameToDelete)
+                            // Sukces! Plik usunięty.
+                        } catch (e: Exception) {
+                            // Obsłuż błąd, jeśli usunięcie się nie powiedzie.
+                            Log.e("StorageDelete", "Nie udało się usunąć pliku: $nameToDelete", e)
+                        }
+                    }
+                }
                 // Wróć do wątku UI, aby pokazać sukces i zamknąć ekran
                 runOnUiThread {
                     Toast.makeText(this@ArtworkDetailActivity, "Usunięto dzieło.", Toast.LENGTH_SHORT).show()

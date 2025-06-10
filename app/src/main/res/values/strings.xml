@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">StreetArtV2</string>
+    <string name="artwork_image_description">Zdjęcie pracy</string>
+    <string-array name="radius_options">
+        <item>50 m</item>
+        <item>200 m</item>
+        <item>1 km</item>
+        <item>5 km</item>
+    </string-array>
+</resources>

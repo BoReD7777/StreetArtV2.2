@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "616744023765",
+    "project_id": "streetart-19df3",
+    "storage_bucket": "streetart-19df3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:616744023765:android:1cd00962edb17ef188545c",
+        "android_client_info": {
+          "package_name": "com.example.streetartv2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTTm_8Dq_ihMUt54qOsN3ow_ka7-DNLYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

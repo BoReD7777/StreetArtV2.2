@@ -249,7 +249,8 @@ class CameraActivity : AppCompatActivity() {
                     imageUrl = publicUrl,
                     latitude = location?.latitude,
                     longitude = location?.longitude,
-                    address = addressText
+                    address = addressText,
+                    authorUsername = authorName
                 )
 
                 // 7. Wstawiamy obiekt do bazy danych
